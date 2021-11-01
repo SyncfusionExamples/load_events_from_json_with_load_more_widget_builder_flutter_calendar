@@ -1,0 +1,2 @@
+# load_events_from_json_with_load_more_widget_builder_flutter_calendar
+How to load the appointment from json to calendar with loadMoreWidgetBuilder
