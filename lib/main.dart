@@ -3,7 +3,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,6 +10,7 @@ void main() => runApp(const LoadMoreWidget());
 
 class LoadMoreWidget extends StatefulWidget {
   const LoadMoreWidget({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => ScheduleExample();
 }
@@ -29,31 +29,31 @@ class ScheduleExample extends State<LoadMoreWidget> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             body: SafeArea(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: SafeArea(
-                        child: SfCalendar(
-                          initialDisplayDate: DateTime(2017, 05, 01),
-                          view: CalendarView.month,
-                          allowedViews: const[
-                            CalendarView.day,
-                            CalendarView.week,
-                            CalendarView.workWeek,
-                            CalendarView.month,
-                            CalendarView.timelineDay,
-                            CalendarView.timelineWeek,
-                            CalendarView.timelineWorkWeek,
-                            CalendarView.timelineMonth,
-                            CalendarView.schedule,
-                          ],
-                          dataSource: _events,
-                          loadMoreWidgetBuilder: loadMoreWidget,
-                        )),
-                  )
-                ],
-              ),
-            )));
+          child: Column(
+            children: [
+              Expanded(
+                child: SafeArea(
+                    child: SfCalendar(
+                  initialDisplayDate: DateTime(2017, 05, 01),
+                  view: CalendarView.month,
+                  allowedViews: const [
+                    CalendarView.day,
+                    CalendarView.week,
+                    CalendarView.workWeek,
+                    CalendarView.month,
+                    CalendarView.timelineDay,
+                    CalendarView.timelineWeek,
+                    CalendarView.timelineWorkWeek,
+                    CalendarView.timelineMonth,
+                    CalendarView.schedule,
+                  ],
+                  dataSource: _events,
+                  loadMoreWidgetBuilder: loadMoreWidget,
+                )),
+              )
+            ],
+          ),
+        )));
   }
 
   Widget loadMoreWidget(
@@ -63,7 +63,8 @@ class ScheduleExample extends State<LoadMoreWidget> {
       future: loadMoreAppointments(),
       builder: (context, snapShot) {
         return Container(
-            alignment: Alignment.center, child: const CircularProgressIndicator());
+            alignment: Alignment.center,
+            child: const CircularProgressIndicator());
       },
     );
   }
